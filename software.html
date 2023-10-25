@@ -1,7 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- ... your head content ... -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software - RZ's Lair</title>
+    <style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+			background-image: url('wallpaper.png');
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-attachment: fixed; /* Add this line to fix the background */
+			color: #fff;
+		}
+        .top-bar {
+            background-color: rgba(51, 51, 51, 0.35); /* Set background color with 35% transparency */
+            color: #fff;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            padding: 10px;
+            text-align: center;
+            margin: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow to the navigation bar */
+        }
+        .top-bar a {
+            text-decoration: none;
+            color: #fff;
+            background-color: rgba(51, 51, 51, 0.35); /* Background color with 35% transparency */
+            padding: 5px 10px; /* Reduce the padding to make buttons 5px smaller */
+            border-radius: 20px; /* Round the button corners */
+            margin: 0 5px; /* Increase margin between buttons to 5px */
+            transition: background-color 0.3s ease; /* Add a smooth transition */
+        }
+        .top-bar a:hover {
+            background-color: rgba(51, 51, 51, 0.6); /* Brighter background color on hover */
+        }
+        .container {
+            padding: 20px;
+        }
+        .file-browser {
+            background-color: rgba(51, 51, 51, 0.35);
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .file-browser a {
+            text-decoration: none;
+            color: #fff;
+            display: block;
+            margin: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .file-browser a:hover {
+            background-color: rgba(51, 51, 51, 0.6);
+        }
+    </style>
 </head>
 <body>
     <div class="top-bar">
@@ -12,28 +70,39 @@
     </div>
     <div class="container">
         <h1>Software</h1>
-        <div id="software-content"></div> <!-- Content will be loaded here -->
+        <div class="file-browser" id="software-content"></div>
     </div>
 
     <script>
-        // Fetch and display the contents of the "software" folder
-        fetch('https://api.github.com/repos/RZXPRO1203/RZXPRO1203.github.io/contents/software')
-            .then(response => response.json())
-            .then(data => {
-                const softwareContent = document.getElementById('software-content');
-                data.forEach(item => {
-                    if (item.type === 'file') {
-                        // Display file link
-                        softwareContent.innerHTML += `<a href="${item.download_url}" target="_blank">${item.name}</a><br>`;
-                    } else if (item.type === 'dir') {
-                        // Display folder name
-                        softwareContent.innerHTML += `<p>${item.name}/</p>`;
-                    }
+        // Keep track of the current folder path
+        let currentFolderPath = '';
+
+        // Fetch and display the contents of a folder
+        function fetchAndDisplayContents(folderPath) {
+            folderPath = folderPath.replace(/^\/+/, '');
+            currentFolderPath = folderPath;
+            fetch(`https://api.github.com/repos/RZXPRO1203/RZXPRO1203.github.io/contents/software/${folderPath}`)
+                .then(response => response.json())
+                .then(data => {
+                    const softwareContent = document.getElementById('software-content');
+                    softwareContent.innerHTML = ''; // Clear previous content
+                    data.forEach(item => {
+                        if (item.type === 'file') {
+                            // Display file link
+                            softwareContent.innerHTML += `<a href="${item.download_url}" target="_blank">${item.name}</a>`;
+                        } else if (item.type === 'dir') {
+                            // Display folder name with a click event
+                            softwareContent.innerHTML += `<a href="#" onclick="fetchAndDisplayContents('${folderPath}/${item.name}')">${item.name}/</a>`;
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching content:', error);
                 });
-            })
-            .catch(error => {
-                console.error('Error fetching content:', error);
-            });
+        }
+
+        // Initial fetch to display the contents of the root folder
+        fetchAndDisplayContents('');
     </script>
 </body>
 </html>
