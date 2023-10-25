@@ -12,20 +12,31 @@
             background-image: url('wallpaper.png');
             background-size: cover;
             background-repeat: no-repeat;
-            color: #fff; /* Set text color to white */
+            color: #fff;
         }
         .top-bar {
-            background-color: #333;
+            background-color: rgba(51, 51, 51, 0.35); /* Set background color with 35% transparency */
             color: #fff;
             border-top-left-radius: 20px;
             border-top-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
             padding: 10px;
             text-align: center;
+            margin: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow to the navigation bar */
         }
         .top-bar a {
             text-decoration: none;
             color: #fff;
-            margin: 0 10px;
+            background-color: rgba(51, 51, 51, 0.35); /* Background color with 35% transparency */
+            padding: 5px 10px; /* Reduce the padding to make buttons 5px smaller */
+            border-radius: 20px; /* Round the button corners */
+            margin: 0 5px; /* Increase margin between buttons to 5px */
+            transition: background-color 0.3s ease; /* Add a smooth transition */
+        }
+        .top-bar a:hover {
+            background-color: rgba(51, 51, 51, 0.6); /* Brighter background color on hover */
         }
         .container {
             padding: 20px;
