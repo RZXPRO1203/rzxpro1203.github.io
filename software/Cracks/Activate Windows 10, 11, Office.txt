@@ -1,0 +1,11 @@
+1. Open Powershell as Administrator
+2. Run this command: irm https://massgrave.dev/get | iex
+3. Select the option you want and enjoy!
+
+-------------------------------------------------------------------------------------
+Activation Type	   | Supported Product	      | Activation Period
+-------------------+--------------------------+--------------------------------------
+HWID	           | Windows 10-11	      | Permanent
+Ohook	           | Office	              | Permanent
+KMS38	           | Windows 10-11-Server     | Till the Year 2038
+Online KMS         | Windows / Office	      | 180 Days. Lifetime With Renewal Task

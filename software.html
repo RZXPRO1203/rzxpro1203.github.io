@@ -62,23 +62,29 @@
             margin-bottom: 10px;
         }
         .navigation button {
-            background-color: rgba(51, 51, 51, 0.35);
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 5px;
-            margin: 5px;
-            cursor: pointer;
+			text-decoration: none;
+			color: #fff;
+			background-color: rgba(51, 51, 51, 0.35);
+			padding: 5px 10px;
+			border-radius: 20px;
+			margin: 0 5px;
+			transition: background-color 0.3s ease;
         }
         .navigation button:disabled {
             background-color: rgba(51, 51, 51, 0.35);
             cursor: not-allowed;
         }
         .navigation button:hover {
-            background-color: rgba(51, 51, 51, 0.6);
+            background-color: rgba(51, 51, 51, 0.6); /* Brighter background color on hover */
         }
         .current-path {
+            text-decoration: none;
             color: #fff;
-            margin: 5px;
+            background-color: rgba(51, 51, 51, 0.35); /* Background color with 35% transparency */
+            padding: 5px 10px; /* Reduce the padding to make buttons 5px smaller */
+            border-radius: 20px; /* Round the button corners */
+            margin: 0 5px; /* Increase margin between buttons to 5px */
+            transition: background-color 0.3s ease; /* Add a smooth transition */
         }
     </style>
 </head>
@@ -93,8 +99,6 @@
         <h1>Software</h1>
         <div class="file-browser" id="software-content">
             <div class="navigation">
-                <button id="back-button">Back</button>
-                <button id="forward-button">Forward</button>
                 <button id="up-button">Up</button>
                 <div class="current-path"></div>
             </div>
@@ -104,10 +108,8 @@
 	
 
     <script>
-        const backButton = document.getElementById('back-button');
-        const forwardButton = document.getElementById('forward-button');
+		const currentPath = document.querySelector('.current-path');
         const upButton = document.getElementById('up-button');
-        const currentPath = document.querySelector('.current-path');
         const softwareContent = document.querySelector('.file-browser .content');
 
         let currentFolderPath = '';
@@ -156,18 +158,6 @@
             fetchAndDisplayContents(`${currentFolderPath}/${folderName}`);
         }
 
-        function goBack() {
-            if (folderStack.length > 1) {
-                folderStack.pop(); // Remove the current folder
-                const previousFolder = folderStack.pop(); // Get the previous folder
-                fetchAndDisplayContents(previousFolder);
-            }
-        }
-
-        function goForward() {
-            // Implement if needed
-        }
-
 		function goUp() {
 			if (currentFolderPath) {
 				const parts = currentFolderPath.split('/');
@@ -183,14 +173,10 @@
 
 
         function updateNavigationUI() {
-            backButton.disabled = folderStack.length < 2;
-            forwardButton.disabled = true; // Implement if needed
             upButton.disabled = !currentFolderPath;
             currentPath.textContent = `Current Path: ${currentFolderPath}`;
         }
 
-        backButton.addEventListener('click', goBack);
-        forwardButton.addEventListener('click', goForward);
         upButton.addEventListener('click', goUp);
 
         fetchAndDisplayContents('');
