@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Launcher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden; /* Disable scrolling */
+            background: url('https://m.media-amazon.com/images/M/MV5BNWJjMWFmMzUtZDVkNy00NDE0LTk3ZGMtMTljZWI4ZjUxODEzXkEyXkFqcGdeQXVyNjQ2NzY3MjM@._V1_.jpg') no-repeat center center fixed;
+            background-size: cover;
+            transition: background 0.5s ease-in-out;
+        }
+
+        body.dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+
+        #left-bar {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 200px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            z-index: 2; /* Ensure it's above the main content */
+        }
+
+        #top-bar {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1; /* Ensure it's below the left bar */
+        }
+
+        #bottom-bar {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1; /* Ensure it's below the left bar */
+        }
+
+        select {
+            padding: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #launcher {
+            background-color: rgba(255, 255, 255, 0);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+            text-align: center;
+            margin: 20px;
+            flex: 3; /* Adjust the width of the main content */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="top-bar">
+        <span id="version-title">Minecraft Launcher</span>
+    </div>
+
+    <div id="launcher">
+    </div>
+
+    <div id="bottom-bar">
+        <select id="version-picker">
+            <option value="select" data-url="#">Select Version</option>
+            <option value="1.8.9" data-url="https://b38db052-652a-4fc6-8760-d967368c8c97-00-uyd6f9qvhvav.worf.replit.dev/">EaglerCraft 1.8.9</option>
+            <option value="1.8.8" data-url="https://eaglercraft.com/mc/1.8.8/">EaglerCraft 1.8.8</option>
+            <option value="1.5.2" data-url="https://sd592g.github.io/zj684od4lfg/">EaglerCraft 1.5.2</option>
+            <option value="classic" data-url="https://classic.minecraft.com">Minecraft Classic</option>
+            <!-- Add more versions as needed -->
+        </select>
+        <button onclick="launchGameFromPicker()">Play</button>
+    </div>
+
+    <script>
+        function launchGameFromPicker() {
+            var selectedVersion = document.getElementById("version-picker").value;
+            var url = document.querySelector("#version-picker option:checked").getAttribute("data-url");
+            window.location.href = url;
+        }
+
+
+        // Update the version title dynamically
+        var versionTitle = document.getElementById("version-title");
+        var versionPicker = document.getElementById("version-picker");
+        versionPicker.addEventListener("change", function() {
+            var selectedVersion = versionPicker.value;
+            var playButton = document.querySelector("#bottom-bar button");
+            playButton.setAttribute("data-url", document.querySelector("#version-picker option:checked").getAttribute("data-url"));
+        });
+
+        // Play button click event
+        var playButton = document.querySelector("#bottom-bar button");
+        playButton.addEventListener("click", function() {
+            var url = playButton.getAttribute("data-url");
+            window.location.href = url;
+        });
+    </script>
+</body>
+</html>
