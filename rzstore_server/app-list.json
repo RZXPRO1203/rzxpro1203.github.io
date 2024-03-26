@@ -2,11 +2,11 @@
     "apps": [
         {
             "name": "Notepad++",
-            "description": "An enhanced text editor for programmers.",
+            "description": "Notepad++ is a free source code editor and Notepad replacement that supports several languages.",
             "developer": "Don Ho",
-            "version": "1.0.0",
-            "thumbnail": "https://static.toiimg.com/photo/102082048.cms",
-            "download": "https://download.notepad-plus-plus.org/npp-1.0.0.exe"
+            "version": "8.6.4",
+            "thumbnail": "https://anturis.com/wp-content/uploads/2022/09/Notepad-Logo-1-184x184.png",
+            "download": "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.6.4/npp.8.6.4.Installer.x64.exe"
         },
         {
             "name": "Another App Name",
