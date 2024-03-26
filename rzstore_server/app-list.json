@@ -5,7 +5,7 @@
             "description": "An enhanced text editor for programmers.",
             "developer": "Don Ho",
             "version": "1.0.0",
-            "thumbnail": "https://ralfszeltins2.github.io/rzstore/notepad-plus-plus.png",
+            "thumbnail": "https://static.toiimg.com/photo/102082048.cms",
             "download": "https://download.notepad-plus-plus.org/npp-1.0.0.exe"
         },
         {
@@ -13,7 +13,7 @@
             "description": "A brief description of the app.",
             "developer": "App Developer Name",
             "version": "App Version",
-            "thumbnail": "https://path/to/thumbnail/image.png",
+            "thumbnail": "https://store-images.s-microsoft.com/image/apps.8453.13655054093851568.4a371b72-2ce8-4bdb-9d83-be49894d3fa0.7f3687b9-847d-4f86-bb5c-c73259e2b38e?h=464",
             "download": "https://link/to/download/app.exe"
         }
     ]
