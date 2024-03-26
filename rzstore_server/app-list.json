@@ -1,21 +1,20 @@
 {
-  "apps": [
-    {
-      "name": "Notepad++",
-      "description": "An enhanced text editor for programmers.",
-      "developer": "Don Ho",
-      "version": "1.0.0",
-      "thumbnail": "https://ralfszeltins2.github.io/rzstore/notepad-plus-plus.png",
-      "download": "https://download.notepad-plus-plus.org/npp-1.0.0.exe"
-    },
-    {
-      "name": "Another App Name",  // Add more apps here following this structure
-      "description": "A brief description of the app.",
-      "developer": "App Developer Name",
-      "version": "App Version",
-      "thumbnail": "https://path/to/thumbnail/image.png",  // Replace with actual image URL
-      "download": "https://link/to/download/app.exe"  // Replace with actual download link
-    },
-    // You can add more app objects here
-  ]
+    "apps": [
+        {
+            "name": "Notepad++",
+            "description": "An enhanced text editor for programmers.",
+            "developer": "Don Ho",
+            "version": "1.0.0",
+            "thumbnail": "https://ralfszeltins2.github.io/rzstore/notepad-plus-plus.png",
+            "download": "https://download.notepad-plus-plus.org/npp-1.0.0.exe"
+        },
+        {
+            "name": "Another App Name",
+            "description": "A brief description of the app.",
+            "developer": "App Developer Name",
+            "version": "App Version",
+            "thumbnail": "https://path/to/thumbnail/image.png",
+            "download": "https://link/to/download/app.exe"
+        }
+    ]
 }
